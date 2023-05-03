@@ -1,0 +1,141 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  background-image: linear-gradient(
+    to right top,
+    #061e5b,
+    #004f8d,
+    #0083b4,
+    #00b7cf,
+    #6aebe3
+  );
+  display: grid;
+  place-items: center;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+#slider {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0px auto;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+}
+.slides {
+  position: absolute;
+  inset: 0;
+  background: #000;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition-delay: 1000s;
+}
+
+.active {
+  z-index: 1;
+  opacity: 1;
+  animation: ring 1000ms ease-in forwards;
+  transition-delay: 0s;
+}
+
+.arrows {
+  position: absolute;
+  z-index: 10;
+  height: 50px;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.prevButton,
+.nextButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+.prevButton {
+  margin-left: 20px;
+}
+.nextButton {
+  margin-right: 20px;
+}
+
+.navigation {
+  position: absolute;
+  z-index: 10;
+  /* background: #fff; */
+  width: 100%;
+  height: 50px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+@keyframes ring {
+  0% {
+    clip-path: circle(0% at 50%);
+  }
+  100% {
+    clip-path: circle(80% at 50% 50%);
+  }
+}
+
+@keyframes curtain {
+  0% {
+    clip-path: inset(50% 0 50% 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes nonagon {
+  0% {
+    clip-path: polygon(
+      50%   50% ,
+      50%   50% ,
+      50%    50% ,
+      50%    50% ,
+      50%    50% ,
+      50%    50% ,
+      50%   50% ,
+      50%   50% ,
+      50%   50% 
+    );
+  }
+  100% {
+    clip-path: polygon(
+      50% 0%,
+      100% 0,
+      100% 43%,
+      100% 78%,
+      100% 99%,
+      0 100%,
+      0 79%,
+      0% 43%,
+      0 0
+    );
+  }
+}
